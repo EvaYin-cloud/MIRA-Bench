@@ -1,0 +1,39 @@
+rgb:
+  paths:
+    rgb_dir: images
+  input:
+    use_depth: false
+    use_mirror_marked: false
+  prompt:
+    mirror_hint: ''
+rgbd:
+  paths:
+    rgb_dir: images
+    depth_dir: .
+  input:
+    use_depth: true
+    use_mirror_marked: false
+  prompt:
+    mirror_hint: ''
+rgbm:
+  paths:
+    rgb_dir: mirror_marked/rgb
+  input:
+    use_depth: false
+    use_mirror_marked: true
+  prompt:
+    mirror_hint: |
+      The semi-transparent green overlay on the image indicates reflective surface regions,
+      which may include mirrors, glass, lake surfaces, or convex mirrors.
+rgbdm:
+  paths:
+    rgb_dir: mirror_marked/rgb
+    depth_dir: mirror_marked/depth
+  input:
+    use_depth: true
+    use_mirror_marked: true
+  prompt:
+    mirror_hint: |
+      The semi-transparent green overlay on the RGB image indicates reflective surface regions,
+      which may include mirrors, glass, lake surfaces, or convex mirrors.
+      The semi-transparent white overlay on the depth map marks the same reflective regions.

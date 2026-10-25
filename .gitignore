@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local environments and secrets
+.venv/
+.env
+.env.*
+!.env.example
+
+# Benchmark outputs and logs
+/Outputs/
+/logs/
+*.log
+*.xlsx
+*.csv
+*_config_used.json
+*_per_sample.csv
+*_summary.xlsx
+*_overall.json
+*_vc_joint.json
+
+# Dataset contents and generated visual assets are distributed separately.
+/Dataset/*
+!/Dataset/.gitkeep
+/data/
+/datasets/
+/_cache/
+/_cache_mm/
+
+# Model weights and external repositories are downloaded separately.
+/models/*
+!/models/.gitkeep
+/third_party/
+
+# Local archives, backups, and editor lock files
+*.tar.gz
+*.zip
+*.bak
+*.bak_*
+.~lock*

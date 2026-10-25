@@ -1,0 +1,183 @@
+gemini-2.5-flash:
+  model:
+    provider: google
+    model_name: gemini-2.5-flash
+    api_key_env: GOOGLE_API_KEY
+    max_tokens: 4096
+    timeout_sec: 120
+    raise_on_api_error: true
+  prompt:
+    explanation_max_words: 20
+  runtime:
+    retry_times: 5
+    sleep_between_retries_sec: 10
+    checkpoint_every_n: 10
+    write_checkpoint_reports: true
+    resume_from_checkpoint: true
+    resume_success_only: true
+gemini-2.5-pro:
+  model:
+    provider: google
+    model_name: gemini-2.5-pro
+    api_key_env: GOOGLE_API_KEY
+    max_tokens: 4096
+    timeout_sec: 120
+    raise_on_api_error: true
+  prompt:
+    explanation_max_words: 20
+  runtime:
+    retry_times: 5
+    sleep_between_retries_sec: 10
+    checkpoint_every_n: 10
+    write_checkpoint_reports: true
+    resume_from_checkpoint: true
+    resume_success_only: true
+    max_new_samples_per_run: 10
+gemini-3.8-flash:
+  model:
+    provider: google
+    model_name: gemini-3.8-flash
+    api_key_env: GOOGLE_API_KEY
+    max_tokens: 4096
+    timeout_sec: 120
+    raise_on_api_error: true
+  prompt:
+    explanation_max_words: 20
+  runtime:
+    retry_times: 5
+    sleep_between_retries_sec: 10
+    checkpoint_every_n: 10
+    write_checkpoint_reports: true
+    resume_from_checkpoint: true
+    resume_success_only: true
+deepseek-vl2-tiny:
+  model:
+    provider: deepseek_vl2
+    model_name: deepseek-ai/deepseek-vl2-tiny
+    model_path: models/deepseek-vl2-tiny
+    device: cuda
+    dtype: bfloat16
+    top_p: 0.9
+    repetition_penalty: 1.1
+    max_tokens: 512
+    chunk_size: -1
+  runtime:
+    checkpoint_every_n: 10
+    write_checkpoint_reports: true
+    resume_from_checkpoint: true
+    resume_success_only: true
+qwen2.5-vl-7b:
+  model:
+    provider: qwen_openai_compatible
+    model_name: Qwen/Qwen2.5-VL-7B-Instruct
+    api_base: http://localhost:8003/v1
+    api_key_env: OPENAI_API_KEY
+    max_tokens: 2048
+    timeout_sec: 120
+    disable_response_format: true
+deepseek-vl2-small:
+  model:
+    provider: deepseek_vl2
+    model_name: deepseek-ai/deepseek-vl2-small
+    model_path: models/deepseek-vl2-small
+    device: cuda
+    dtype: bfloat16
+    top_p: 0.9
+    repetition_penalty: 1.1
+    max_tokens: 512
+    chunk_size: -1
+  runtime:
+    checkpoint_every_n: 10
+    write_checkpoint_reports: true
+    resume_from_checkpoint: true
+    resume_success_only: true
+qwen3:
+  model:
+    provider: qwen_openai_compatible
+    model_name: Qwen/Qwen3.5-9B
+    api_base: http://localhost:8000/v1
+    api_key_env: OPENAI_API_KEY
+    max_tokens: 2048
+    timeout_sec: 120
+    use_json_schema: true
+llava-ov-7b:
+  model:
+    provider: qwen_openai_compatible
+    model_name: lmms-lab/llava-onevision-qwen2-7b-ov
+    api_base: http://localhost:8004/v1
+    api_key_env: OPENAI_API_KEY
+    max_tokens: 2048
+    timeout_sec: 120
+    disable_response_format: true
+minicpm-v-2_6:
+  model:
+    provider: minicpm_v
+    model_name: openbmb/MiniCPM-V-2_6
+    model_path: models/MiniCPM-V-2_6
+    device: cuda
+    dtype: bfloat16
+    attn_implementation: sdpa
+    sampling: false
+    max_tokens: 512
+qwen3-vl-8b:
+  model:
+    provider: qwen_openai_compatible
+    model_name: Qwen/Qwen3-VL-8B-Instruct
+    api_base: http://localhost:8002/v1
+    api_key_env: OPENAI_API_KEY
+    max_tokens: 2048
+    timeout_sec: 120
+    disable_response_format: true
+internvl3:
+  model:
+    provider: qwen_openai_compatible
+    model_name: OpenGVLab/InternVL3-8B
+    api_base: http://localhost:8000/v1
+    disable_response_format: true
+    api_key_env: OPENAI_API_KEY
+    max_tokens: 2048
+    timeout_sec: 120
+  mode_overrides:
+    rgbdm:
+      model:
+        api_base: http://localhost:8001/v1
+gpt-5.4:
+  model:
+    provider: openai
+    model_name: gpt-5.4
+    api_key_env: OPENAI_API_KEY
+    max_tokens: 2048
+    max_completion_tokens: 2048
+    use_max_completion_tokens: true
+    timeout_sec: 120
+  runtime:
+    checkpoint_every_n: 10
+    write_checkpoint_reports: true
+    resume_from_checkpoint: true
+    resume_success_only: true
+deepseek-vl2-tiny-server:
+  model:
+    provider: qwen_openai_compatible
+    model_name: deepseek-ai/deepseek-vl2-tiny
+    api_base: http://localhost:8005/v1
+    api_key_env: OPENAI_API_KEY
+    max_tokens: 512
+    repair_max_tokens: 512
+    top_p: 0.9
+    repetition_penalty: 1.1
+    timeout_sec: 120
+    disable_response_format: true
+  runtime:
+    checkpoint_every_n: 10
+    write_checkpoint_reports: true
+    resume_from_checkpoint: true
+    resume_success_only: true
+llava-ov-7b-hf:
+  model:
+    provider: qwen_openai_compatible
+    model_name: llava-hf/llava-onevision-qwen2-7b-ov-hf
+    api_base: http://localhost:8004/v1
+    api_key_env: OPENAI_API_KEY
+    max_tokens: 2048
+    timeout_sec: 120
+    disable_response_format: true

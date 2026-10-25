@@ -1,0 +1,47 @@
+prompt_version: v4
+seed: 42
+paths:
+  data_root: Dataset
+input:
+  image_suffixes:
+  - .jpg
+  - .jpeg
+  - .png
+  max_samples: null
+  allowed_question_types: null
+  allowed_referring_styles: null
+  allowed_template_ids: null
+  include_categories: null
+  exclude_categories: null
+prompt:
+  system_prompt: |
+    You are evaluating a visual reasoning benchmark about mirror scenes.
+    Answer strictly using the required JSON schema.
+    Do not output markdown.
+    Do not output any extra text outside the JSON object.
+  task_instruction: |
+    Use the provided image(s) to answer the question.
+    The final answer must be based on what you can observe in the image(s).
+  task_background: |
+    Task background:
+    - Some objects are seen directly in the real world.
+    - Some objects are seen only through a mirror reflection.
+    - A mirror instance and a real-world instance may refer to the same physical object.
+    - All spatial descriptions use the ego-centered coordinate system of the input image.
+    - "Left" and "right" refer to the image/observer's left and right.
+    - "Front" and "behind" refer to depth relative to the observer in the current image view.
+    - Unless explicitly stated otherwise, answer from the viewpoint of the current image.
+    - Use only the provided visual evidence.
+  depth_hint: |
+    You are provided with two images: the first is an RGB image,
+    and the second is a depth map using jet colormap
+    (blue = near/close to camera, red = far from camera).
+    Use the depth map to reason about relative distances and spatial positions of objects.
+  ask_for_brief_explanation: true
+  explanation_max_words: 100
+model:
+  temperature: 0.0
+runtime:
+  save_raw_response: true
+  retry_times: 2
+  sleep_between_retries_sec: 1
