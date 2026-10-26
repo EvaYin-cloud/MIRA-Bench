@@ -43,11 +43,11 @@ class ConfigurationTests(unittest.TestCase):
                 self.assertEqual(cfg["prompt"]["explanation_max_words"], 20)
                 self.assertEqual(cfg["runtime"]["retry_times"], 5)
                 self.assertEqual(cfg["runtime"]["sleep_between_retries_sec"], 10)
+                self.assertEqual(cfg["runtime"]["checkpoint_every_n"], 10)
+                self.assertTrue(cfg["runtime"]["write_checkpoint_reports"])
+                self.assertTrue(cfg["runtime"]["resume_from_checkpoint"])
                 self.assertTrue(cfg["runtime"]["resume_success_only"])
-                if name == "pro":
-                    self.assertEqual(cfg["runtime"]["max_new_samples_per_run"], 10)
-                else:
-                    self.assertNotIn("max_new_samples_per_run", cfg["runtime"])
+                self.assertIsNone(cfg["runtime"].get("max_new_samples_per_run"))
 
     def test_local_and_gpt_special_values(self):
         for size in ("tiny", "small"):

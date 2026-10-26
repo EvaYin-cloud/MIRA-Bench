@@ -9,10 +9,10 @@ __pycache__/
 .venv/
 .env
 .env.*
-!.env.example
 
 # Benchmark outputs and logs
-/Outputs/
+/Outputs/*
+!/Outputs/.gitkeep
 /logs/
 *.log
 *.xlsx

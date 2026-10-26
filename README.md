@@ -8,11 +8,11 @@ Hao Yin, Tianchen Guo, Heming Du, Yan Ke, [Yanbin Liu](https://csyanbin.github.i
 
 ## 🌟 Highlights
 
-- **Real scenes with reflections:** 1,011 images from 525 scenes, covering six reflective surface types in indoor and outdoor environments under daytime and nighttime lighting conditions.
-- **Hierarchical reasoning tasks:** 14,140 question–answer pairs across eight subtasks and three cognitive levels: reflection-aware perception, spatial reasoning, and scene-level decision-making.
+- **Real scenes with reflections:** **1,011 images** from **525 scenes**, covering **six reflective surface types** in indoor and outdoor environments under daytime and nighttime lighting conditions.
+- **Hierarchical reasoning tasks:** **14,140 question–answer pairs** across **eight subtasks** and **three cognitive levels**: reflection-aware perception, spatial reasoning, and scene-level decision-making.
 - **Detailed annotations:** Reflective surface masks, instance masks for directly observed and reflected objects, correspondences between objects and their reflections, and spatial relation annotations.
-- **Controlled input comparisons:** Evaluation across RGB, RGB-D, RGB-M, and RGB-DM settings, using five protocols for referring to objects, supports analysis of depth information, mirror-region cues, and object referencing.
-- **Performance gaps and depth limitations:** Evaluation of 10 VLMs reveals a substantial gap from human performance. Adding depth does not consistently improve accuracy and can degrade performance on some tasks.
+- **Controlled input comparisons:** Evaluation across **RGB, RGB-D, RGB-M, and RGB-DM** settings, using **five protocols** for referring to objects, supports analysis of depth information, mirror-region cues, and object referencing.
+- **Performance gaps and depth limitations:** Evaluation of **10 VLMs** reveals a substantial gap from human performance. Adding depth does not consistently improve accuracy and can degrade performance on some tasks.
 
 ## 🚀 Quick start
 
@@ -23,8 +23,8 @@ Use Python 3.10 or 3.11.
 ```bash
 git clone https://github.com/EvaYin-cloud/MIRA-Bench.git
 cd MIRA-Bench
-python3 -m venv .venv
-source .venv/bin/activate
+conda create -n mira-bench python=3.11 -y
+conda activate mira-bench
 pip install -r requirements.txt
 ```
 
@@ -115,16 +115,16 @@ CUDA_VISIBLE_DEVICES=0,1 TENSOR_PARALLEL_SIZE=2 HOST=127.0.0.1 \
 
 `CUDA_VISIBLE_DEVICES` selects the GPUs; `TENSOR_PARALLEL_SIZE` sets how many GPUs share the model. `MODEL_PATH` selects the local weight directory, and `PORT` sets the service port. Refer to the [vLLM installation guide](https://docs.vllm.ai/en/v0.19.0/getting_started/installation/gpu/) for CUDA requirements.
 
-Keep the server running during evaluation. DeepSeek-VL2-Tiny follows the same workflow with the `deepseek-vl2-tiny-server` preset and its linked server script.
+Keep the server running during evaluation.
 
 ### Run evaluation
 
 | Parameter | Controls | Choices / default |
 | --- | --- | --- |
 | `--model` | Model preset | See the model table below. |
-| `--mode` | Input setting | `rgb`, `rgbd`, `rgbm`, `rgbdm`; default: `rgbdm`. `d` adds depth; `m` adds mirror markings. |
+| `--mode` | Input setting | `rgb`, `rgbd`, `rgbm`, `rgbdm`; default: `rgbdm`. `d` adds depth; `m` overlays mirror-region masks on the input images. |
 | `--data-root` | Prepared dataset directory | `Dataset` |
-| `--qa-json` | Question annotation file | `<data-root>/annotations/questions.json` |
+| `--qa-json` | Question annotation file | `Dataset/annotations/questions.json`; follows `--data-root`. |
 | `--output-dir` | Predictions and reports directory | `Outputs/<model>_<mode>` |
 | `--set` | Individual model or runtime setting | For example, `model.api_base=http://localhost:8000/v1`. |
 
@@ -134,12 +134,10 @@ For a closed-source model, run from the evaluation environment after setting its
 python -m src.main --model gpt-5.4 --mode rgbdm
 ```
 
-For Gemini Pro, include `--set runtime.max_new_samples_per_run=null` to evaluate the full dataset in one run.
-
 For a local server, open another terminal at the repository root and activate the evaluation environment:
 
 ```bash
-source .venv/bin/activate
+conda activate mira-bench
 export OPENAI_API_KEY=EMPTY
 python -m src.main --model qwen3 --mode rgbd \
   --set model.api_base=http://localhost:8000/v1
