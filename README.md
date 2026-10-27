@@ -4,7 +4,7 @@
 
 Hao Yin, Tianchen Guo, Heming Du, Yan Ke, [Yanbin Liu](https://csyanbin.github.io/), and [Xin Yu](https://xinyu-au.github.io/).
 
-**[Dataset on Kaggle](https://www.kaggle.com/datasets/evayin/eval-mirror-dataset)** · **[Code](https://github.com/EvaYin-cloud/MIRA-Bench)**
+**[🤗 Dataset on Hugging Face](https://huggingface.co/datasets/evayinhao/MIRA-Bench)** · **[Code](https://github.com/EvaYin-cloud/MIRA-Bench)**
 
 ## 🌟 Highlights
 
@@ -30,7 +30,7 @@ pip install -r requirements.txt
 
 ### Download and prepare the data
 
-1. Download the annotations and self-collected RGB/depth images from [Kaggle](https://www.kaggle.com/datasets/evayin/eval-mirror-dataset). Extract them into `Dataset/`, with `annotations/` and `images/` directly inside it.
+1. Download the annotations and self-collected RGB/depth images from [Hugging Face](https://huggingface.co/datasets/evayinhao/MIRA-Bench). Place them in `Dataset/`, with `annotations/` and `images/` directly inside it.
 2. Obtain [RGBD-Mirror](https://mhaiyang.github.io/CVPR2021_PDNet/index.html) and [DVMD](https://github.com/UpChen/2025_DVMDNet) separately. Place or symlink them under `Dataset/images/RGBD-Mirror/` and `Dataset/images/Published_DVMD/`, preserving the original split and scene structure.
 3. Prepare the normalized grayscale depth images referenced by the annotations before preprocessing. RGBD-Mirror uses `depth_normalized/`; DVMD uses `Depth_Norm_Per_Sequence/`. The script below consumes these inputs; it does not normalize raw depth. Self-collected grayscale depth is already included.
 
