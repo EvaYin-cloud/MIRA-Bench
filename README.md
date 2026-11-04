@@ -4,7 +4,8 @@
 
 Hao Yin, Tianchen Guo, Heming Du, Yan Ke, [Yanbin Liu](https://csyanbin.github.io/), and [Xin Yu](https://xinyu-au.github.io/).
 
-**[🤗 Dataset on Hugging Face](https://huggingface.co/datasets/evayinhao/MIRA-Bench)** · **[Code](https://github.com/EvaYin-cloud/MIRA-Bench)**
+[![Paper: arXiv](https://img.shields.io/badge/Paper-arXiv-b31b1b?style=flat)](https://arxiv.org/abs/2610.41651v1)
+[![Dataset: Hugging Face](https://img.shields.io/badge/Dataset-Hugging%20Face-yellow?style=flat)](https://huggingface.co/datasets/evayinhao/MIRA-Bench)
 
 ## 🌟 Highlights
 
@@ -164,7 +165,17 @@ Predictions, metrics, and an Excel summary are saved under `Outputs/`, grouped b
 
 ## 📜 Citation
 
-To be updated.
+```bibtex
+@misc{yin2026depthliesbenchmarkingvisionlanguage,
+  title={When Depth Lies: Benchmarking Vision-Language Models on Mirror-Induced RGB-D Ambiguity},
+  author={Hao Yin and Tianchen Guo and Heming Du and Yan Ke and Yanbin Liu and Xin Yu},
+  year={2026},
+  eprint={2610.41651},
+  archivePrefix={arXiv},
+  primaryClass={cs.CV},
+  url={https://arxiv.org/abs/2610.41651},
+}
+```
 
 ## 📄 License
 
